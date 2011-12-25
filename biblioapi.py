@@ -1,3 +1,5 @@
+#coding: utf-8
+
 import urllib, urllib2
 import json
 import re
@@ -26,6 +28,8 @@ MTL_BASE_URL_OPTS = {
     'searchlimits': ''
 }
 def mtl_get_status_by_isbn(isbn):
+    """Given an ISBN string, returns availability status of holdings in the
+    Ville de Montréal libraries."""
     urlopts = dict(MTL_BASE_URL_OPTS)
     urlopts['searcharg'] = isbn
     url = MTL_BASE_URL + urllib.urlencode(urlopts)
@@ -48,6 +52,8 @@ def mtl_get_status_by_isbn(isbn):
     
 BANQ_BASE_URL = 'http://iris.banq.qc.ca/alswww2.dll/APS_ZONES?fn=AdvancedSearch&Style=Portal3&SubStyle=&Lang=FRE&ResponseEncoding=utf-8'
 def banq_get_status_by_isbn(isbn):
+    """Given an ISBN string, returns availability status of holdings in the
+    Grande Bibliothèque of the Bibliothèques et Archives Nationales du Québec."""
     br = mechanize.Browser()
     br.open(BANQ_BASE_URL)
     br.select_form(name="ExpertSearch")
