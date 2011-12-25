@@ -1,0 +1,5 @@
+Flask>=0.8
+lxml>=2.3
+mechanize>=0.2.5
+#gunicorn>=0.13
+#gevent
